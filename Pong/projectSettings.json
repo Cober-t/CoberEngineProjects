@@ -1,7 +1,7 @@
 {
     "name": "\"Game\"",
     "assetsPath": "\"./Pong\"",
-    "buildPath": "%{prj.name/build}",
+    "buildPath": "Game/build",
     "lastScene": "SceneDefault.lua",
     "screenWidth": 1280,
     "screenHeight": 720

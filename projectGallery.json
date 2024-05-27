@@ -1,7 +1,12 @@
 {
-    "Game": {
+    "Pong": {
         "projectPath": "./Pong",
         "description": "Sandbox app inside engine folder",
         "thumbnail": "sandbox.png"
+    },
+    "FlappyBird": {
+        "projectPath": "C:\\Users\\Jorge\\Documents\\GameEngine\\Projects\\FlappyBird",
+        "description": "example",
+        "thumbnail": "FlappyBird.jpg"
     }
 }

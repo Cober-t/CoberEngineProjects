@@ -1,0 +1,8 @@
+{
+    "name": "\"FlappyBird\"",
+    "assetsPath": "\"C:/Users/Jorge/Documents/GameEngine/Projects/FlappyBird\"",
+    "buildPath": "%{prj.name/build}",
+    "lastScene": "SceneDefault.lua",
+    "screenWidth": 1280,
+    "screenHeight": 720
+}
