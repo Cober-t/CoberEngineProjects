@@ -1,0 +1,13 @@
+/.vs
+/.vscode
+/assets
+obj/
+.idea/
+__pycache__/
+
+*.log
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.vs

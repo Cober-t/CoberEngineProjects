@@ -1,0 +1,7 @@
+{
+    "Game": {
+        "projectPath": "./Pong",
+        "description": "Sandbox app inside engine folder",
+        "thumbnail": "sandbox.png"
+    }
+}
