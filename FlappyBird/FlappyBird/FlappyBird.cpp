@@ -10,7 +10,6 @@ FlappyBird::FlappyBird() : Layer("FlappyBird application")
 void FlappyBird::OnAttach() 
 {
 	m_ActiveScene = Scene::Load("FlappyBird.lua");
-	m_ActiveScene->OnSimulationStart();
 }
 
 
@@ -25,9 +24,8 @@ void FlappyBird::OnDetach()
 
 void FlappyBird::OnUpdate(Unique<Timestep>& ts) 
 {
-	RenderGlobals::SetClearColor(46, 47, 52);
+	RenderGlobals::SetClearColor(95, 205, 228);
 	RenderGlobals::Clear();
-	m_Camera->OnUpdate(ts);
 	m_ActiveScene->OnUpdateSimulation(ts, m_Camera);
 }
 

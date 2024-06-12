@@ -8,7 +8,9 @@
 #include "Core/Core.h"
 #include "Scene/ECS.h"
 
-#include "../TestScript.h"
+#include "../BirdController.h"
+#include "../MovePipe.h"
+#include "../Parallax.h"
 
 #define ENTT_STANDARD_CPP
 #include <entt/entt.hpp>
@@ -18,39 +20,90 @@ namespace Cober {
 
 	extern "C" CB_SCRIPT void InitScripts(Scene* scene, Entity entity)
 	{
-		if (entity.GetComponent<NativeScriptComponent>().className == "TestScript")
+		if (entity.GetComponent<NativeScriptComponent>().className == "BirdController")
 		{
-			entity.AddComponent<TestScript>();
+			entity.AddComponent<BirdController>();
+			entity.GetComponent<BirdController>().entity = entity;
+			entity.GetComponent<BirdController>().scene = scene;
+			entity.GetComponent<BirdController>().OnStart();
+		}
+
+		if (entity.GetComponent<NativeScriptComponent>().className == "MovePipe")
+		{
+			entity.AddComponent<MovePipe>();
+			entity.GetComponent<MovePipe>().entity = entity;
+			entity.GetComponent<MovePipe>().scene = scene;
+			entity.GetComponent<MovePipe>().OnStart();
+		}
+
+		if (entity.GetComponent<NativeScriptComponent>().className == "Parallax")
+		{
+			entity.AddComponent<Parallax>();
+			entity.GetComponent<Parallax>().entity = entity;
+			entity.GetComponent<Parallax>().scene = scene;
+			entity.GetComponent<Parallax>().OnStart();
 		}
 	}
 
 	extern "C" CB_SCRIPT void UpdateScripts(Scene* scene, float dt)
 	{
-		auto testScriptView = scene->GetAllEntitiesWith<TestScript>();
+		auto birdControllerView = scene->GetAllEntitiesWith<BirdController>();
 
-		for (auto entt : testScriptView)
+		for (auto entt : birdControllerView)
 		{
 			Entity entity = Entity(entt, scene);
-			entity.GetComponent<TestScript>().OnUpdate(dt);
+			entity.GetComponent<BirdController>().OnUpdate(dt);
+		}
+
+		auto movePipeView = scene->GetAllEntitiesWith<MovePipe>();
+
+		for (auto entt : movePipeView)
+		{
+			Entity entity = Entity(entt, scene);
+			entity.GetComponent<MovePipe>().OnUpdate(dt);
+		}
+
+		auto parallaxView = scene->GetAllEntitiesWith<Parallax>();
+
+		for (auto entt : parallaxView)
+		{
+			Entity entity = Entity(entt, scene);
+			entity.GetComponent<Parallax>().OnUpdate(dt);
 		}
 	}
 
 	extern "C" CB_SCRIPT void NotifyBeginContact(Entity* entityA, Entity* entityB)
 	{
-		if (entityA->HasComponent<TestScript>())
-			entityA->GetComponent<TestScript>().OnBeginContact(entityB);
-		else if (entityA->HasComponent<TestScript>())
-			entityB->GetComponent<TestScript>().OnBeginContact(entityA);
+		if (entityA->HasComponent<BirdController>())
+			entityA->GetComponent<BirdController>().OnBeginContact(entityB);
+		else if (entityB->HasComponent<BirdController>())
+			entityB->GetComponent<BirdController>().OnBeginContact(entityA);
+		
+		if (entityA->HasComponent<Parallax>())
+			entityA->GetComponent<Parallax>().OnBeginContact(entityB);
+		else if (entityB->HasComponent<Parallax>())
+			entityB->GetComponent<Parallax>().OnBeginContact(entityA);
 	}
 
-	// extern "C" CB_SCRIPT void NotifyEndContact(Entity* entityA, Entity* entityB)
-	// {
-	// }
+	extern "C" CB_SCRIPT void NotifyEndContact(Entity* entityA, Entity* entityB)
+	{
+		if (entityA->HasComponent<BirdController>())
+			entityA->GetComponent<BirdController>().OnEndContact(entityB);
+		else if (entityB->HasComponent<BirdController>())
+			entityB->GetComponent<BirdController>().OnEndContact(entityA);
+		
+		if (entityA->HasComponent<Parallax>())
+			entityA->GetComponent<Parallax>().OnEndContact(entityB);
+		else if (entityB->HasComponent<Parallax>())
+			entityB->GetComponent<Parallax>().OnEndContact(entityA);
+	}
 
 
 	extern "C" CB_SCRIPT void DeleteScripts(Scene* scene)
 	{
-		scene->GetRegistry()->clear<TestScript>();
+		scene->GetRegistry()->clear<BirdController>();
+		scene->GetRegistry()->clear<MovePipe>();
+		scene->GetRegistry()->clear<Parallax>();
 	}
 
 
