@@ -2,11 +2,16 @@
     "Pong": {
         "projectPath": "./Pong",
         "description": "Sandbox app inside engine folder",
-        "thumbnail": "sandbox.png"
+        "thumbnail": "pong.png"
     },
     "FlappyBird": {
         "projectPath": "C:\\Users\\Jorge\\Documents\\GameEngine\\Projects\\FlappyBird",
         "description": "example",
         "thumbnail": "FlappyBird.jpg"
+    },
+    "Breakout": {
+        "projectPath": "C:\\Users\\Jorge\\Documents\\GameEngine\\Projects\\Breakout",
+        "description": "Breakout, third project",
+        "thumbnail": "breakout.png"
     }
 }

@@ -1,0 +1,8 @@
+{
+    "name": "\"Breakout\"",
+    "assetsPath": "\"C:/Users/Jorge/Documents/GameEngine/Projects/Breakout\"",
+    "buildPath": "%{prj.name/build}",
+    "lastScene": "SceneDefault.lua",
+    "screenWidth": 1280,
+    "screenHeight": 720
+}
